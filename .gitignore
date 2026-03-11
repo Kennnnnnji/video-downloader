@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+build/
+dist/
+*.spec
+.DS_Store
+.omc/
+app_icon.iconset/
+icon_preview.png
