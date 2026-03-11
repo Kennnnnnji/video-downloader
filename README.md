@@ -2,7 +2,7 @@
 
 macOS 桌面应用，支持下载哔哩哔哩和抖音视频。基于 yt-dlp + PyQt6 构建，原生 macOS 风格界面。
 
-![macOS](https://img.shields.io/badge/macOS-13%2B-blue) ![Python](https://img.shields.io/badge/Python-3.10%2B-green) ![License](https://img.shields.io/badge/License-MIT-yellow)
+![macOS](https://img.shields.io/badge/macOS-13%2B-blue) ![Python](https://img.shields.io/badge/Python-3.10%2B-green) ![License](https://img.shields.io/badge/License-GPL%20v3-red)
 
 ## 功能
 
@@ -108,4 +108,4 @@ video-downloader/
 
 ## License
 
-MIT
+GPL v3
