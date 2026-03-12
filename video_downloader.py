@@ -27,7 +27,7 @@ from PyQt6.QtWidgets import (
 
 import yt_dlp
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 
 # ─── 主题 ───────────────────────────────────────────────
 
@@ -409,8 +409,14 @@ class DownloadWorker(QThread):
             self.finished.emit(False, "下载已取消")
         except yt_dlp.utils.DownloadError as e:
             msg = str(e)
-            if "login" in msg.lower() or "cookie" in msg.lower():
-                self.finished.emit(False, "需要登录，请选择浏览器 Cookies 后重试")
+            if "login" in msg.lower() or "cookie" in msg.lower() or "permission" in msg.lower():
+                self.finished.emit(False,
+                    "获取浏览器 Cookies 失败。\n"
+                    "请确保：\n"
+                    "1. 已在浏览器中登录抖音\n"
+                    "2. 系统设置 → 隐私与安全性 → 完全磁盘访问 → 添加本应用\n"
+                    "3. 配置完成后，请完全退出并重新打开应用"
+                )
             else:
                 self.finished.emit(False, f"下载失败: {msg}")
         except Exception as e:
@@ -521,6 +527,7 @@ class MainWindow(QWidget):
         self.cookies_combo.addItem("不使用", "none")
         self.cookies_combo.addItem("Safari", "safari")
         self.cookies_combo.addItem("Chrome", "chrome")
+        self.cookies_combo.addItem("Edge", "edge")
         self.cookies_combo.addItem("Firefox", "firefox")
         c_col.addWidget(self.cookies_combo)
         opts_row.addLayout(c_col)
